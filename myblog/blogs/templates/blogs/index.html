@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blogs/style.css' %}">
+    <meta charset="UTF-8">
+    <title>My blogs</title>
+</head>
+<body>
+<h1>Latest blog posts</h1>
+<div class="button">
+    <button><a href="{{ 'blogs:create_post' }}" class="action-button">Create new post</a></button>
+</div>
+<div class="button">
+    <button><a href="{{ 'blogs:edit_post' }}" class="action-button">Edit a post</a></button>
+</div>
+<div class="button">
+    <button><a href="/logout" class="action-button">Logout</a></button>
+</div>
+{% for post in blog_posts %}
+<div>
+<h2>{{ post.title }}</h2>
+<p>{{ post.excerpt }}</p>
+</div>
+{% endfor %}
+</body>
+</html>

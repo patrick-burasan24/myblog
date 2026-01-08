@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Log In</title>
+</head>
+<body>
+<form action="/authenticate/" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" placeholder="Your username...">
+        {% if username_error_message %}
+            <span class="error-message">{{ username_error_message }}</span>
+        {% endif %}
+    </p>
+    <p>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" placeholder="Your password...">
+        {% if password_error_message %}
+            <span class="error-message">{{ password_error_message }}</span>
+        {% endif %}
+    </p>
+    <p class="button">
+        <input type="submit" value="Login">
+    </p>
+    {% if auth_error_message %}
+        <span class="error-message">{{ auth_error_message }}</span>
+    {% endif %}
+</form>
+</body>
+</html>
