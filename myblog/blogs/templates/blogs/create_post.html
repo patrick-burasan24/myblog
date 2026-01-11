@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blogs/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Post</title>
+</head>
+<body>
+<div class="form">
+    <form action="{% url 'blogs:add-post' %}" method="post">
+    {% csrf_token %}
+    <div class="post-title">
+        <div><label for="post-title">Title</label></div>
+        <input type="text" name="post-title" id="post-title">
+        {% if post_title_error_message %}
+            <span class="error-message">{{ post_title_error_message }}</span>
+        {% endif %}
+    </div>
+    <div class="post">
+        <div><label for="create-new-post">Create new post</label></div>
+        <textarea name="post-text" id="post-text"></textarea>
+        {% if post_text_error_message %}
+            <span class="error-message">{{ post_text_error_message }}</span>
+        {% endif %}
+    </div>
+    <div class="button">
+        <input type="submit" value="Post">
+    </div>
+</form>
+</div>
+</body>
+</html>

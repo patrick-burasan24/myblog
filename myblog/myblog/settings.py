@@ -27,9 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/login'
+STATIC_URL = 'static/'
+
 # Application definition
 
 INSTALLED_APPS = [
+    'home.apps.HomeConfig',
     'blogs.apps.BlogsConfig',
     'login.apps.LoginConfig',
     'logout.apps.LogoutConfig',
